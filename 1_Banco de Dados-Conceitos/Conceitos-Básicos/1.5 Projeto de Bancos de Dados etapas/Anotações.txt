@@ -1,0 +1,126 @@
+Etapas do projeto de Banco de Dados
+É uma metodologia que propõe uma sequência de ações, divididas em etapas, para a moldagem dos dados, através de diferentes níveis de abstração. No fluxograma abaixo, no maior nível, no topo, para baixo, vai diminuindo o nível de abstração.
+
+Figura: CB-Figura_01
+
+Descrição: Fluxograma representado através de três retângulos, o superior está escrito [projeto conceitual], o abaixo deste, no centro, está escrito [projeto lógico], e para findar o da base, está escrito, [projeto físico].
+
+Modelos de Dados
+É uma descrição dos tipos de informações que estão armazenadas num banco de dados, ou seja, quais informações se tem armazenadas num banco de dados? Tudo isso se verifica através de um modelo de dados.
+
+Figura: CB-Figura_02
+
+Descrição: Esquema em que no canto inferior central, tem-se um retângulo escrito [Banco de dados] e abaixo dessa escrita, ainda dentro, do retângulo, outro retângulo, neste, tem-se escrito [Produto] e ao lado dele, há reticências. Há três setas de pontas duplas apontando para o retângulo [Banco de dados], partindo de um retângulo cada. No primeiro, tem-se escrito [Produção], no segundo [Vendas] e no terceiro [Compras].
+
+Por exemplo, nesse modelo descrito poderia ser informado que o banco de dados armazena informações sobre produtos e que, para cada produto, são armazenados seu código, preço e descrição, mas ele não informa quais produtos estão armazenados no banco de dados, mas apenas que o banco de dados apresenta informações sobre produtos. Veja bem, somente através do modelo não é possível distinguir os produtos, no entanto, se pode inferir que este banco de dados está modelado para armazenar produtos.
+
+Ainda no exemplo, o modelo de dados não informa quais os produtos que estão armazenados no banco de dados, mas apenas que o banco de dados contém informações sobre produtos.
+
+Modelo de Dados
+Modelo de Dados: descrição formal de uma estrutura de um banco de dados, logo ela segue regras e formas específicas para serem descritas, não é mensurável fazer um determinada descrição levando em consideração achismos pessoais, é obrigatório ter formas e regras para descrever a estrutura do banco de dados, tudo isso através de linguagens de modelagens de dados.
+Linguagem de Modelagem de Dados: podem ser classificadas de acordo com a forma de apresentar modelos.
+Linguagens textuais.
+
+Linguagens gráficas.
+
+Modelo Conceitual
+É uma descrição do banco de dados de forma independente de implementação de um SGBD, ou seja, é feita uma descrição sem a preocupação com qual SGBD depois disponível no mercado, se pretende de fato implementar esse banco de dados, sendo assim, o modelo conceitual independente do SGBD que será usado.
+
+Registra que dados podem aparecer no banco de dados, mas não registra como estes dados estão registrados, só é necessário identificar os dados que serão armazenados, por exemplo, será armazenado clientes ou produtos, para cada cliente será armazenado o nome, o CPF e a data de nascimento, sendo assim, é restringindo quais dados irão aparecer no banco de dados.
+
+A técnica mais difundida de modelagem conceitual é a abordagem entidade-relacionamento (ER).
+
+É usualmente representado através de um diagrama, chamado diagrama entidade-relacionamento (DER).
+
+Figura: CB-Figura_03
+
+Descrição: Esquema em que tem-se um retângulo na esquerda, escrito [Produto]. Deste retângulo, tem-se uma linha saindo para cima e duas para baixo, se conectando a um círculo cada. Sobre a direita dos círculos, no de cima, tem-se escrito [Preço], nos de baixo, tem-se da esquerda pra direita, [Código] e [Descrição], sendo que o círculo ao lado de [Código] está preenchido em preto. Deste retângulo, sai uma linha conectando a um losango, sendo que acima desta linha tem-se escrito [N]. Deste losango, sai uma linha o conectando a um retângulo escrito [Tipo de produto], sendo que acima desta linha tem-se escrito [1]. Do retângulo [Tipo de produto], tem-se duas linhas conectando a um círculo cada. Da esquerda pra direita, no primeiro círculo, preenchido em preto, tem-se [Código] escrito na direita [Código], no segundo, tem-se [Descrição].
+
+Modelo Lógico
+É uma descrição do banco de dados no nível de abstração visto pelo usuário do SGBD específico, ou seja, dependente do tipo de abordagem que o SGBD usa, por exemplo, se é usado um Sistema Gerenciador de Banco de Dados que trabalha com banco de dados relacionais, que é uma abordagem, será necessário no modelo lógico ter ideia que deverá ser trabalhado com SGBD relacional para fazer a modelagem nessa abstração seguindo a abstração do modelo relacional.
+
+Registra que dados podem aparecer no banco de dados, e de que forma lógica serão armazenados, utilizando-se de alguma abordagem específica, atente que não é o armazenamento físico, mas de que forma lógica eles serão organizados e armazenados nesse SGBD.
+
+A técnica mais difundida de modelagem lógica é a abordagem Relacional, onde os dados estão organizados em tabelas.
+
+Deve definir quais as tabelas que o banco contém e como se relacionam e para cada tabela, quais os nomes das colunas, ou seja, quais atributos é preciso armazenar de cada uma das pessoas, clientes, etc., que se deseja fazer o registro no banco de dados.
+
+TipoDeProduto (CodTipoProd (chave primária), DescrTipoProd)
+
+Produto (CodProd (chave primária), DescrProd, PrecoProd, CodTipoProd)
+
+	CodTipoProd referencia TipoDeProduto
+
+
+TipoDeProduto
+CodTipoProd	DescrTipoProd
+1	        Computador
+2	        Impressora
+Descrição da tabela:
+
+CodTipoProd: 1; DescrTipoProd: Computador.
+
+CodTipoProd: 2; DescrTIpoProd: Impressora.
+
+
+Produto CodProd	    DescrProd	        PrecoProd	CodTipoProd
+1	    PC          desktop modelo X    2.500	    1
+2	    PC          notebook ABC	    3.500	    1
+3	    Impressora  jato de tinta	    600	        2
+4	    Impressora  laser	            800	        2
+Descrição da tabela:
+
+CodProd: 1; DescrProd: PC desktop modelo X; PrecoProd: 2.500; CodTipoProd: 1.
+
+CodProd: 2; DescrProd: PC notebook ABC; PrecoProd: 3.500; CodTipoProd: 1.
+
+CodProd: 3; DescrProd: Impressora jato de tinta; PrecoProd: 600; CodTipoProd: 2.
+
+CodProd: 4; DescrProd: Impressora laser; PrecoProd: 800; CodTipoProd: 2.
+
+Modelo Físico
+É uma descrição de um banco de dados no nível de abstração mais baixo, onde trata dos detalhes de armazenamento interno de informações.
+
+Os detalhes de armazenamento podem influenciar a performance de aplicações, mas não interferem na programação das aplicações de um SGBD.
+
+As linguagens e notações para o modelo físico, não são padronizadas e variam de produto a produto.
+
+A tendência em produtos mais modernos é esconder o modelo físico do usuário e transferir tarefas de otimização ao próprio SGBD.
+
+Projeto de Banco de Dados
+As etapas de Projeto de Banco de Dados abordadas no decorrer do curso são:
+
+Projeto Conceitual.
+
+– Transformação do Conceitual para o Lógico –
+
+Projeto Lógico.
+
+Etapa 1: Projeto ou Modelagem Conceitual.
+
+É construído um modelo conceitual, na forma de um diagrama entidade-relacionamento.
+
+Este modelo captura as necessidades da organização em termos de armazenamento de dados de forma independente de implementação.
+
+Etapa 2: Projeto ou Modelagem Lógica.
+
+A etapa de projeto lógico objetiva transformar o modelo conceitual obtido na primeira fase em um modelo lógico.
+
+O modelo lógico vai definir como banco de dados será implementado seguindo a abordagem de um SGBD específico. 
+
+Figura: CB-Figura_04
+
+Esquema que começa do topo indo para baixo, o [Mini-Mundo] fica no topo, possui uma silhueta de nuvem em sua volta e uma seta que vai para [Análise de requisitos] que possui um retângulo em sua volta, que possui duas setas que vão uma para [Requisitos funcionais] e uma para [Requisitos do BD]. Cada um destes dois itens criam uma série de itens que vão para baixo, itens estes que são juntos por uma seta apontando para baixo cada. Em [Requisitos funcionais], temos de cima para baixo, [Análise funcional] dentro de um retângulo, [Especificação das transações (em alto nível)], [Projeto das aplicações] dentro de um retângulo, [Implementação] envolto em um retângulo e [Programas]. Em [Requisitos do BD], temos [Projeto conceitual] dentro de um retângulo, [Esquema conceitual (em um modelo de dados de alto nível)], [Projeto lógico] dentro de um retângulo, [Esquema lógico (em um modelo de dados lógico)], [Projeto físico] dentro de um retângulo, [Esquema físico (para um SGBD específico)]. [Análise funcional] está relacionada com [Projeto físico] por uma seta, [Esquema lógico (em um modelo de dados lógico)] está relacionado com [Projeto das aplicações] por uma seta e [Esquema físico (para um SGBD específico)] está relacionado com [Implementação]. Há uma seta, ao lado de uma área escrito [Independente de SGBD], indicando que todas as etapas antes de [Projeto Lógico] e [Projeto das aplicações] são partes disso. Além dessa seta, há outra, ao lado de uma área escrito [Específico para um SGBD], indicando que todas as etapas depois de [Especificação das Transações (em alto nível) e [Esquema Conceitual (em um modelo de dados de alto nível)] são partes disso.
+
+Abaixo, segue a aula que fala sobre o que vimos até agora.
+
+Transcrição do vídeo
+
+-------------------------------------------------------
+Referências:
+
+DATE, C. J. Introdução aos sistemas de Banco de Dados. 8. Ed. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, R. e NAVATHE, S. Sistemas de Banco de Dados. São Paulo: Pearson/Addison Wesley, 2011.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de banco de dados. São Paulo: Elsevier, 2012.

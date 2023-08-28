@@ -1,0 +1,93 @@
+1.2 Fundamentos de BD
+Sistema de Banco de Dados
+
+Características:
+
+Natureza autodescritiva do Sistema, ou seja os próprios dados o que é armazenado, auto descrevem este Sistema de Banco de Dados.
+
+Isolamento entre os programas e os dados, atente-se que os dados ficam isolados do programa, sendo assim é possível atualizar algo do SBD, mantendo os dados armazenados garantidos, sem problema algum. Isto foi denotado no esquema citado anteriormente.
+
+Suporte para as múltiplas visões dos dados, ou seja, um administrador tem uma visão dos dados com mais detalhes e mais acessos, um programador um pouco menos, e usuário final menos ainda, só tem a visão do sistema ou do Software que ele tá usando, e demonstra os dados para ele e permite, então isso vem com a características do SBD.
+
+Compartilhamento de dados e processamento de transações de multiusuários, ou seja, a ideia de que todos acessam os mesmos dados e quando alguém está editando, por exemplo um registro, se alguém pede, para visualizar aquele registro, como que eu coordeno isso, mostra o registro com o dado antigo? não mostra o registro para aquele usuário que pediu para vê ? Primeiro atualizo o registro e depois mostro para ele o registro já atualizado? 
+
+Como é que organiza-se essas transações, o mesmo ocorre, por exemplo, numa conta corrente, está se fazendo um depositando, e o cliente pede para vê o saldo, aguardo para liberar o saldo antes ou depois do depósito para a pessoa que está solicitando o saldo, tudo isso, essas transações são organizadas pelo sistema de banco de dados.
+
+
+
+Por que usar banco de dados?
+Densidade: não há necessidade de arquivos (papel/digital), antigamente, caro (a) cursista um arquivo de papel de gavetas, aquilo eram um banco de dados analógico, na loja, um banco de dados, por exemplo, é o registro de entrada e saída de mercadorias, cadastro de possíveis clientes, emissão de notas fiscais, tudo isso era feito no papel, por mais que a posteriori tudo isto era digitalizado, era muito trabalhoso e dispendioso, e a densidade era muito grande, por mais que hoje ainda se tenha isso, o SGBD máscara de uma Medida, logo o usuário/administrador ou o usuário, não precisa lidar com a densidade dos arquivos de um banco de dados, o SGBD resolve para o usuário.
+
+Velocidade: rapidez de obtenção e atualização de dados.
+
+Agilidade: tarefas mecânicas realizadas pela máquina são muito mais ágeis do que qualquer busca manual feita por alguém, o ser humano buscando em arquivos individuais, catalogados da melhor forma possível, a máquina sempre vai ganhar numa busca de algum dado que alguém deseja consultar. 
+
+Atualidade: informações precisa e atualizadas.
+
+Proteção: dados protegidos contra perda e acesso ilegal.
+
+Tudo o que foi descrito até o momento o BD garante ao usuário, e é uma das grandes motivações pela sua ampla utilização e difusão.
+
+
+
+Controle Centralizado
+O controle centralizado é muito importante em ambientes multiusuários, que são basicamente todos os SGBD utilizados.
+
+Papéis de destaque:
+Administrador de dados: deve entender dos dados, decidir quais dados armazenar quando se está realizando um projeto de Banco de Dados.
+Administrador de bancos de dados: criar os bancos de dados, definir as estruturas, implementar controles, assegurar desempenho, etc.
+Atentem que este segundo administrador, deve ser algum profissional da área da Tecnologia, visto que, será ele que deverá administrar o Sistema de Banco de Dados em si, no entanto, ele precisará do apoio do administrador de dados que é justamente a pessoa que entende do contexto, do domínio de aplicação que se está fazendo.
+Por exemplo, numa determinada empresa é necessário fazer o controle de cadastro de cliente, de vendas, etc., é preciso falar com o profissional que está locado na área comercial ou de vendas da empresa, para que eles possam entender os dados que eles têm, para que assim tenham a possibilidade de criar o Banco de Dados, definir as estruturas, etc., Em casos eventuais pode ocorrer do mesmo profissional atuar como administrador de dados e também como administrador de banco de dados.
+
+
+Vantagens
+Os dados podem ser compartilhados. 
+
+A redundância pode ser reduzida, não se corre o risco de armazenar dados duplicados ou de forma recorrente. 
+
+A inconsistência pode ser evitada, tem a possibilidade de garantir a qualidade dos dados. 
+
+O suporte a transação pode ser fornecido.
+
+A integridade a ser mantida, ou seja, por exemplo, aquela informação que foi inserida ou configurada, fica garantida a sua totalidade integral ao longo do tempo.
+
+A segurança a ser reforçada, é possível conseguir ter o controle de diferentes níveis de acesso para diferentes tipos de usuários.
+
+Requisitos contraditórios podem ser equilibrados com controle centralizado.
+
+Os padrões podem ser impostos, que vão garantir a integralidade ao longo do tempo, por exemplo, é possível ter uma data sempre com um padrão, caso contrário o sistema não aceita, não a armazena, que o CPF tenha sempre o mesmo padrão, etc. 
+
+
+
+Arquitetura de três esquemas
+Proposta para auxiliar a realização e visualização dessas características.
+
+Objetivo principal: separar o usuário da aplicação, que é quem está manipulando, do banco de dados físico, que é armazenado em disco. 
+
+A separação do usuário se dá através de níveis de abstração dos dados.
+
+Três níveis de abstração:
+
+Nível de visões do usuário.
+Nível conceitual.
+Nível físico.
+
+
+Níveis de abstração
+
+Figura: CB-Figura_01
+
+Descrição: Esquema em que entre duas representações de pessoas há escrito [Usuários finais]. Abaixo delas, há um retângulo cada, em ambos está escrito [Visão externa], sendo que entre ambos há reticências e, no lado esquerdo do retângulo da direita, há escrito [Nível externo]. Sendo que dos dois retângulos, saem duas setas de pontas duplas, apontando para um retângulo escrito [Esquema conceitual]. Ao lado esquerdo da seta esquerda, há escrito [Mapeamento externo/conceitual] e ao lado esquerdo do retângulo [Esquema conceitual] há escrito [Nível conceitual]. Deste retângulo, sai uma seta de pontas duplas, apontando para um retângulo escrito [Esquema interno]. Ao lado esquerdo desta seta, há escrito [Mapeamento conceitual/interno] e ao lado esquerdo do retângulo [Esquema interno] há escrito [Nível interno]. Deste retângulo, sai uma linha, que se divide em três, cada uma conectando a um cilindro, sendo que abaixo deles, há escrito [Banco de dados armazenado].
+
+Nível de visões do usuário: nível mais próximo aos usuários finais, relaciona-se à forma como os dados são vistos pelos usuários individuais, em suma é a visão do usuário, como ele vê os dados. 
+Nível conceitual: nível que corresponde à representação abstrata de banco de dados, através de estruturas que descrevem quais dados estão armazenados e quais seus relacionamentos. Ressalta-se que não quer dizer que é como ele está armazenado e relacionado no disco fisicamente numa máquina, ele é uma forma de abstração disso, se verá de uma forma que não é a realidade.
+Nível físico: nível mais próximo ao armazenamento físico, relaciona-se à forma como os dados são realmente armazenados e acessados fisicamente.
+
+-------------------------------------------------------------------------------------------------
+Referências:
+
+DATE, C. J. Introdução aos sistemas de Banco de Dados. 8. Ed. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, R. e NAVATHE, S. Sistemas de Banco de Dados. São Paulo: Pearson/Addison Wesley, 2011.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de banco de dados. São Paulo: Elsevier, 2012.

@@ -1,0 +1,152 @@
+Independência de Dados
+Explica-se através da arquitetura de três esquemas.
+
+Conceito: capacidade de mudar um esquema em um nível de sistema de banco de dados sem que ocorram alterações do esquema do nível mais alto.
+Dois tipos de independência de dados:
+
+Independência lógica de dados: capacidade de alterar o esquema conceitual sem mudar o esquema externo ou os programas.
+Independência física de dados: capacidade de alterar o esquema interno sem ter de mudar o esquema conceitual (nem o esquema externo, por consequência). 
+
+
+Modelos de Dados
+Fornecem a abstração: omissão de detalhes do armazenamento de dados.
+
+Os conjuntos de conceitos usados para descrever a estrutura de um banco de dados são: tipos de dados, relacionamentos, restrições, etc.
+
+
+
+Categorias de Modelos de Dados
+Classificam os modelos de dados de acordo com os tipos de conceitos que utilizam para descrever a estrutura BD
+
+Conceituais: Fornecem conceitos próximos à percepção dos usuários.
+Lógicos: Fornecem conceitos que descrevem como os dados são armazenados.
+Físicos: Fornecem conceitos de acordo com as regras de implementação.
+
+
+Modelos Lógicos
+Estruturados em registros de formatos fixos, de diversos tipos.
+
+Cada tipo tem sua colocação de atributos.
+
+Há linguagens para expressar consultas e atualizações.
+
+Aqui nesta tabela há duas contas com o mesmo saldo, conta e saldo é o mesmo, com pessoas diferentes em cidades diferentes. Tem-se então uma redundância.
+
+
+Nome	Rua	        Cidade	    Conta	Saldo
+José	Figueiras	Campinas	900	    55
+João	Laranjeiras	Campinas	556	    1.000
+João	Laranjeiras	Campinas	647	    5.366
+Antônio	Ipê	        São Paulo	647	    5.366
+Antônio	Ipê         São Paulo   801	    10.533
+
+Descrição da tabela:
+
+Nome: José; Rua: Figueiras; Cidade: Campinas; Conta: 900; Saldo: 55.
+
+Nome: João; Rua: Laranjeiras; Cidade: Campinas; Conta: 556; Saldo: 1.000.
+
+Nome: João; Rua: Laranjeiras; Cidade: Campinas; Conta: 647; Saldo: 5.366.
+
+Nome: Antônio; Rua: Ipê; Cidade: São Paulo; Conta: 647; Saldo: 5.366.
+
+Nome: Antônio; Rua: Ipê; Cidade: São Paulo; Conta: 801; Saldo: 10.533.
+
+
+Hierárquico
+
+Figura: CB-Figura_01
+
+Descrição: Esquema em que tem-se um retângulo em branco no topo central, deste retângulo, saem três linhas. Da esquerda pra direita, a primeira linha, se conecta a um retângulo dividido em três partes, sendo que cada uma delas tem algo escrito dentro, da esquerda pra direita tem-se [José], [Figueiras] e [Campinas]. Este retângulo se conecta por uma linha a um retângulo dividido em duas partes, na primeira está escrito [900] e na segunda [55]. A segunda linha que sai do retângulo central, se conecta a um retângulo dividido em três partes, a primeira, tem escrito [João], a segunda, [Laranjeiras] e a terceira [Campinas], sendo que deste retângulo, saem duas linhas que se conectam a retângulos divididos em duas partes, sendo que no primeiro tem-se escrito nelas [556] e [56], já no segundo, [647 e 5.366]. Por fim, a terceira linha que sai do retângulo central, se conecta a um retângulo dividido em três partes, na primeira está escrito [Antônio], na segunda [Ipê] e na terceira [São Paulo], sendo que deste retângulo, saem duas linhas que se conectam a retângulos divididos em duas partes, sendo que no primeiro tem-se escrito nelas [647] e [5.366], já no segundo, [801] e [10.533].
+
+
+Neste exemplo mais uma vez ocorre uma redundância, pois dois correntistas dividem a mesma conta, e novamente é necessário demonstrar repetidamente duas vezes a mesma conta, para indicar que ela está ligada ao cliente João e também ao cliente Antônio, ao mesmo tempo, esta é uma outra forma de representação que acarreta demonstração redundante.
+
+Os dados estão estruturados em hierarquias de árvores e sua estrutura utiliza as organizações de endereçamento físico dos discos
+
+Os nós das hierarquias contém ocorrências de registros, onde cada registro é uma coleção de atributos, é um modelo orientado a registros, ou seja, operam um registro de cada vez. 
+
+Um registro pode estar associado a vários registros, porém ele deve ser replicado.
+
+Em Rede
+
+Figura: CB-Figura_02
+
+Descrição: Esquema em que tem-se dois esquemas. No do topo, da esquerda pra direita, se tem um retângulo dividido em três partes, sendo que em cada uma há algo escrito, na primeira [José], na segunda [Figueiras] e na terceira [Campinas]. Deste retângulo, sai uma linha pra direita que o conecta a um retângulo dividido em duas partes, na primeira, tem-se escrito [900] e na segunda, [55]. No esquema de baixo, no topo superior esquerdo, tem-se um retângulo dividido em três partes, na primeira tem-se escrito [João], na segunda [Laranjeiras] e na terceira [Campinas]. Este retângulo se conecta a dois retângulos, por uma linha cada. Os dois estão divididos em duas partes, sendo que no de cima tem-se escrito [556] na primeira e [1.000] na segunda, já no de baixo, tem-se [647] na primeira e [5.366] na segunda. No topo inferior esquerdo, tem-se um retângulo dividido em três partes, escrito na primeira [Antônio], na segunda [Ipê] e na terceira [São Paulo]. Este retângulo se conecta ao retângulo [647 | 5.366] e a um retângulo dividido em duas partes, na primeira escrito [801] e na segunda [10.533].
+
+É uma extensão do modelo hierárquico, porém elimina o conceito de hierarquia, visto que os registros estão organizados e em grafos.
+
+
+Permite que um mesmo registro esteja envolvido em várias associações. Também opera um registro de cada vez, por ser orientado a registros.
+
+
+
+Modelo Relacional
+
+Tabela Cliente (dados)
+Cód-cliente	Nome	Rua	        Cidade
+015	        José	Figueiras	Campinas
+021	        João	Laranjeiras	Campinas
+037	        Antônio	Ipê	        São Paulo
+Descrição da tabela:
+
+Cód-cliente: 015; Nome: José; Rua: Figueiras; Cidade: Campinas.
+
+Cód-cliente: 021; Nome: João; Rua: Laranjeiras; Cidade: Campinas.
+
+Cód-cliente: 037; Nome: Antônio; Rua: Ipê; Cidade: São Paulo.
+
+
+Tabela Conta (dados)
+Nro-conta	Saldo
+900	        55
+556	        1.000
+647	        5.366
+801	        10.533
+Descrição da tabela:
+
+Nro-conta: 900; Saldo: 55.
+
+Nro-conta: 556; Saldo: 1.000.
+
+Nro-conta: 647; Saldo: 5.366.
+
+Nro-conta: 801; Saldo: 10.533.
+
+
+Tabela Cliente-Conta (relacionamento)
+Cód-cliente	Nro-conta
+015	        900
+021	        556
+021	        647
+037	        647
+037	        801
+Descrição da tabela:
+
+Cód-cliente: 015; Nro-conta: 900.
+
+Cód-cliente: 021; Nro-conta: 566.
+
+Cód-cliente: 021; Nro-conta: 647.
+
+Cód-cliente: 037; Nro-conta: 647.
+
+Cód-cliente: 037; Nro-conta: 801.
+
+O modelo relacional é composto por um conjunto de tabelas ou relações, onde cada tabela é um conjunto não-ordenado de linhas (tuplas), que por sua vez, são uma série de campos (atributos)
+
+Simplicidade dos conceitos básicos e poder dos operandos de manipulação.
+
+Cada campo possui um nome e o conjunto de campos que possuem um mesmo nome formam uma coluna na tabela.
+
+Abaixo, segue a aula que fala sobre o que vimos até agora.
+Fonte youtube.
+
+-------------------------------------------------------------------------------
+Referências:
+
+DATE, C. J. Introdução aos sistemas de Banco de Dados. 8. Ed. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, R. e NAVATHE, S. Sistemas de Banco de Dados. São Paulo: Pearson/Addison Wesley, 2011.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de banco de dados. São Paulo: Elsevier, 2012.

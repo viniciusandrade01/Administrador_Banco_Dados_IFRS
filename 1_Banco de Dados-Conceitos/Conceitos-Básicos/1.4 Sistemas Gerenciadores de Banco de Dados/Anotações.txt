@@ -1,0 +1,75 @@
+SGBD
+É o Software que trata de todo o acesso ao banco de dados.
+
+Fornece a interface entre os dados de baixo nível armazenados em um banco de dados em si, e os programas aplicativos ou as solicitações submetidas ao sistema.
+
+Objetivos de um SGBD
+Isolar usuários dos detalhes mais internos do banco de dados: abstração de dados.
+
+Prover independência de dados às aplicações: estrutura física e estratégia de acesso.
+
+SGBD
+Conceitualmente
+
+Usuário faz um pedido de acesso usando determinada linguagem de dados.
+
+SGBD intercepta o pedido e o analisa.
+
+Inspeção do esquema externo, do mapeamento externo/conceitual, do esquema conceitual, do mapeamento conceitual/interno e da definição de do BD.
+
+SGBD executa operações necessárias sobre o banco de dados armazenado.
+
+Figura: CB-Figura_01
+
+Descrição: Esquema, em que no topo há três retângulos, em todos está escrito [Ling. + Subling.] em negrito. Em cada um deles há escrito algo em cima, da esquerda pra direita, tem-se [Usuário 1], [Usuário 2] e [Usuário 3]. Dos primeiros dois retângulos, têm-se setas de pontas duplas, apontando para um retângulo escrito [Visão externa A]. Há uma seta apontando para este retângulo, saindo de uma área escrito [Mapeamento A externo/conceitual]. Desta área, sai uma seta apontando para um retângulo escrito [Visão Conceitual]. Ao lado esquerdo dele, há escrito [Esquema conceitual], além disso, há uma seta apontando para este retângulo, saindo de uma área escrito [Mapeamento conceitual/interno]. Desta área, sai uma seta apontando para um retângulo com três cilindros dentro, sendo que ao lado esquerdo deste retângulo, há escrito [Visão interna]. No terceiro retângulo [Ling. + Subling.], há uma seta de pontas duplas, apontando para um retângulo escrito [Visão externa B], sendo que há uma seta apontando para este retângulo, saindo de uma área escrito [Mapeamento B externo/conceitual]. Desta área, tem-se uma seta apontando para o retângulo [Visão Conceitual]. Na área esquerda de tudo citado até agora, há um símbolo de chave, partindo de uma área que tem escrito [DBA] em negrito e um desenho de um administrador de banco de dados, envolvendo da área escrito [Visão interna] até a seta entre o primeiro retângulo [Ling. + Subling.] e o retângulo [Visão externa A]. Na área direita de tudo citado até agora, há um círculo escrito [Sistema de Gerenciamento de banco de dados (SGBD). Dele, tem-se várias setas de pontas duplas, contando de baixo para cima, tem-se uma apontando para o retângulo com cilindros dentro, após essa, tem-se uma apontando para o retângulo [Visão Conceitual], uma apontando para a área escrito [Mapeamento B externo/conceitual], uma apontando para um tracejado ao lado do retângulo [Visão externa B] e uma para um tracejado ao lado do terceiro retângulo [Ling. + Subling.].
+
+
+
+Tarefas de um SGBD
+Interação com o sistema de arquivos do sistema operacional.
+
+Manutenção da integridade, garante que os dados foram armazenados e as questões que foram restringidas irão ser mantidas.
+
+Controle de concorrência de acesso, ou seja, duas pessoas acessando ao mesmo tempo dois aplicativos, querendo gravar o mesmo registro, como é possível organizar isso num SGBD.
+
+Cópias de segurança e recuperação dessas cópias e recuperação desses dados que porventura tenha sido feita cópia. 
+
+
+Segurança contra acesso indevido que porventura alguém tente realizar.
+
+
+
+Arquiteturas de SGBD
+Centralizada.
+Cliente/Servidor.
+
+
+Centralizada:
+
+Um computador com uma grande capacidade de processamento é o hospedeiro do SGBD e dos emuladores para os vários aplicativos que de repente necessitem fazer o acesso a esses dados.
+
+Vantagem: permitir que muitos usuários manipulem grande volume de dados.
+Desvantagem: alto custo, pois exige ambiente muito especial para mainframes e soluções centralizadas.
+Atualmente é algo em bastante desuso, pois envolve um custo imenso.
+
+
+
+Cliente/Servidor:
+
+Cliente: executa as atividades do aplicativo, ou seja, fornece a interface do usuário (tela e processamento de entrada e saída).
+Saída: Executa as consultas no SGBD e retorna os resultados ao cliente.
+São necessárias soluções sofisticadas de software para possibilitar: o tratamento de transações, as confirmações de transações (commits), desfazer transações (rollbacks), linguagens de consultas (stored procedures) e gatilhos (triggers).
+
+Vantagem: Menor intensidade de tráfego de dados na rede comparado a arquitetura distribuída. São rápidos, pois as consultas são feitas em servidores de alta potência.
+Desvantagem: exigem que os dados sejam armazenados num único sistema.
+O servidor de banco de dados faz a verdadeira operação de busca e retorna somente os dados que preencham corretamente a consulta do usuário.
+
+
+--------------------------------------------------------
+Referências:
+
+DATE, C. J. Introdução aos sistemas de Banco de Dados. 8. Ed. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, R. e NAVATHE, S. Sistemas de Banco de Dados. São Paulo: Pearson/Addison Wesley, 2011.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de banco de dados. São Paulo: Elsevier, 2012.

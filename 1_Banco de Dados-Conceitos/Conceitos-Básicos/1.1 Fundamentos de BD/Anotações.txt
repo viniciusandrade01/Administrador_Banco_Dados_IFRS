@@ -1,0 +1,118 @@
+1.1 Fundamentos de BD
+Contexto
+Caro estudante, você já parou e se perguntou o que são bancos de dados?
+
+Todos os meios de comunicação que utilizam algum tipo de tecnologia informacional, como os dispositivos móveis, computadores, automóveis, roteadores nas residências, equipamentos de internet, a nuvem, equipamentos eletrônicos, inclusive documentos físicos como: cartas, e-mails, planilhas relatórios, todos os itens anteriormente citados, precisarão armazenar dados, então o banco de dados enquanto conceito está vinculado a diversas áreas da computação, senão todas.
+
+Conceitos
+Dado: representação da informação.
+Fato do mundo real que está registrado e que possui um significado implícito, no contexto de um domínio de determinada aplicação. Exemplo: data de nascimento, data de cadastro, data que um funcionário entrou na empresa.
+
+Observe que o dado data é um fato, é uma data de um calendário que parte das pessoas seguem, e o significado dele vai depender do contexto do domínio da aplicação.
+
+Informação: significado do dado.
+Fato útil que pode ser extraído direta ou indiretamente a partir de um dado. Exemplo: idade da pessoa.
+
+Uma informação é extraída direta ou indiretamente de um dado, neste caso, a data de nascimento é o dado utilizado, e a partir dele, num cadastro de informações pessoais de alguém, por exemplo, é possível extrair uma informação, ou seja, um significado para este dado. Partindo do dado data de nascimento de um indivíduo, é possível adquirir a idade da pessoa. 
+
+Conceitos: Bancos de Dados
+Cada livro conceitua banco de dados de uma maneira diferente,, ou seja, este conceito não é restrito ou imutável, é possível encontrar diferentes conceitos, em diversos autores.
+
+Segue então, uma lista de três possíveis conceitos:
+
+O equivalente eletrônico de um armário de arquivamento.
+Uma coleção de dados relacionados.
+É uma colocação de dados inter-relacionados representando informações sobre um domínio específico.
+Ao longo deste curso, iremos abordar o terceiro conceito citado. Essa definição será adotada pois é a com maior relação ao curso, além disso, na maioria das vezes, é necessário partir de um domínio, de um cenário, para poder começar a modelar e projetar um banco de dados, esses dados vão representar situações e informações que tem significado neste domínio.
+
+Sistema de Banco de Dados
+É um sistema que está no computador, que faz a manutenção desses registros, ou seja, ele mantém os dados e os torna disponíveis, quando se faz alguma consulta, então ele permite armazenar e manter ao longo do tempo, e eles estarão disponíveis quando for preciso. Então esse o SBD é formado por várias partes, a saber: pelos dados em si, por conjuntos de software, nestes encaixam-se os gerenciadores, alguns programas e aplicativos que funcionam em conjunto, o hardware, que ao final do dia armazena em si os dados e por fim as pessoas, também nomeadas por usuários, técnicos ou administradores, todos fazem parte do que conhecemos como Sistema de Banco de Dados, ressalta-se que todos os itens citados funcionam de forma sistêmica. 
+
+Em suma o SBD é um subsistema computadorizado de manutenção de registros, cujo objetivo é manter os dados e torná-los disponíveis quando solicitados:
+
+Dados. 
+Software (gerenciador, programas/aplicativos, etc.)
+Hardware ( no fim do dia armazena em si os dados)
+Pessoas (usuários e programadores/técnicos).
+Atente-se que todos esses componentes do SBD funcionam de forma sistêmica.
+
+A figura representa, mais ou menos, o Sistema de Banco de Dados, o quadrado mais externos, atente que há a representação dos usuários e programadores interagindo como parte desses sistema, os programas de apoio, que estão representados na imagem, que fazem a interface com o Software SGBD (Sistema Gerenciador de Banco de Dados), geralmente tem um software interface com este SGBD, na maioria das vezes fornecidos pelo próprio SGBD, dentro da imagem, observe que está descrito de forma objetiva a parte mais escondida para o usuário e para o programador, já não é mister para a pessoa que trabalha como administrador de banco de dados especificamente. Nele estão contidos os processadores, que utilizam as consultas quando é preciso consultar dados, o acesso é feito em bases físicas em si, os cilindros recortados são a representação da parte física do que seria a definição dos dados armazenados (metadados) e dos dados armazenados. Logo toda essa figura apresenta de forma genérica o SBD.
+
+Figura: CB-Figura_01
+
+Descrição: Esquema em que no topo há uma representação de duas pessoas e ao lado escrito [Usuários e Programadores]. Abaixo delas há um quadrado, com a legenda [Sistema de banco de dados], no canto superior esquerdo, neste quadrado há um esquema dentro. Há uma seta de duas pontas, apontando das duas pessoas para um retângulo dentro do quadrado. Neste retângulo, há escrito [Programas aplicativos/Consultas]. Deste retângulo, sai uma seta de duas pontas, apontando para um retângulo escrito [Processador/Otimizador de Consultas]. Deste retângulo, tem-se uma seta de duas pontas, apontando para um retângulo escrito [Software para acessar os dados]. Sendo que deste, tem-se duas setas de duas pontas, uma apontando para um cilindro escrito [Definição dos dados armazenados (metadados)] e a outra [Dados armazenados]. Há um retângulo que engloba os retângulos [Processador/Otimizador de Consultas] e [Software para acessar os dados], sendo que nele há a legenda [Software SGBD] no canto superior esquerdo.
+
+SGBD - Sistema Gerenciador de Bancos de Dados
+Dados: o que está armazenado em si
+Então eles são integrados, todos reunidos ali de uma forma integrada.
+
+São passíveis de serem compartilhados.
+
+Software: camada entre os usuários e os dados.
+Gerenciador é o software mais pesado, que de fato gerencia, coordena acessos, questões de segurança, integridade desses dados.
+
+São aplicativos que fazem essa interface direta.
+
+Hardware: onde os dados estão literalmente armazenados, então um disco, um SSD, um HD, da máquina onde aquele Sistema de Banco de Dados está rodando.
+Pessoas:
+Usuários finais: acessam o banco de dados via aplicativos ou gerenciador.
+
+Programadores de aplicativos: interagem através do gerenciador, que configura e formatam o banco de dados para uma determinada aplicação que esteja sendo desenvolvida. 
+
+Administradores: têm o mais alto nível de acesso às partes mais internas do SGBD.
+
+Programas utilitários e ferramentas: Existe ainda uma gama de utilitários, ferramentas, que um SBD vai trabalhar em conjunto, tem ferramentas eventualmente de carga, carga inicial que contém no banco de dados zerado, é preciso dar carga nele, e inserir várias informações cadastrais já conhecidas, ao se tratar de um cenário de trabalho já pressuposto, seja de backup e de retomada dos dados que foi possível realizar cópias de segurança, utilitários para reorganizar os dados e alguma medida, com o tempo é preciso fazer uma reorganização para utilizar o acesso aos dados, quando se tem diversificadas tabelas, dados e coisas diferentes ao longo do tempo armazenado. 
+
+Há o software para estatísticas que fazem análises, também sobre esses dados. Os dados eles precisam ter algum significado, alguma explicação, ademais é necessário definir algumas coisas ao armazenar os dados para que o SGBD consiga manter a integridade deles ao longo do tempo usando. alguns desses, a maioria, senão os próprios sistemas gerenciadores de bancos de dados já oferecem várias destas ferramentas, dentro deles mesmos. 
+
+De carga.
+De backup/restore.
+De reorganização.
+Estatísticas.
+Analíticas.
+Dicionário de dados/Catálogo (metadados).
+Os bancos de dados evoluíram em quatro gerações, a primeira geração, o processamento eram chamados arquivos independentes. 
+
+
+
+Evolução
+1ª Geração
+
+Processamento em arquivos independentes.
+
+Cada cilindro na imagem seria um arquivo que tem um cadastro, neste modelo se cadastrar um projeto, caso quisesse extrair as relações de projeto, teria que extrair um relatório a partir deste arquivo independente.
+
+Outro exemplo seria o arquivo de cadastrar empregados, com a intenção de emitir a folha, atentem que nada é integrado, todos os componentes estão separados e independentes. 
+
+Figura: CB-Figura_02
+
+Descrição: Está exemplificado três fluxogramas, na esquerda, tem-se o primeiro. Sobre ele, no canto inferior, há um retângulo escrito [Cadastrar projetos], com uma seta apontando para cima, para um cilindro escrito cadastro. Deste cilindro sai uma seta apontando para um retângulo escrito [Extrair relação proj./emp.], sendo que deste retângulo, sai uma seta apontando para um paralelogramo escrito [Relatório]. Após esse esquema, no canto inferior direito, tem-se um retângulo escrito [Cadastrar horas/trabalho], com uma seta apontando para cima, para um cilindro escrito cadastro. Deste cilindro sai uma seta apontando para um retângulo escrito [Emitir horas extras], sendo que deste retângulo, sai uma seta apontando para um paralelogramo escrito [Relatório]. Por fim, no canto superior central, há um retângulo achatado, escrito [Dados cadastrais], com uma seta apontando para baixo, para um cilindro escrito [Cadastrar empregado], sendo que deste retângulo, sai uma seta apontando para um cilindro escrito [Cadastro]. Deste cilindro, sai uma seta apontando para um retângulo escrito [Emitir folha], sendo que deste retângulo, sai uma seta apontando para um paralelogramo escrito [Folha de pagamento].
+
+2ª Geração
+
+Com o passar do tempo, na segunda geração houve um avanço, que é integrar, na imagem se tem um arquivo integrado, e todos os processos acessam esse arquivo integrado e emitem os relatórios.
+
+Figura: CB-Figura_03
+
+Descrição: Tem-se um fluxograma. No topo central, há um retângulo achatado escrito [Dados cadastrais], com uma seta apontando para um retângulo escrito [Cadastrar empregado], sendo que este retângulo possui uma seta apontando para um cilindro escrito [Cadastro]. Na esquerda, tem-se dois retângulos com setas apontando para o cilindro [Cadastro], no primeiro está escrito [Cadastrar Projetos] e no segundo, [Cadastrar horas/trabalho]. Do cilindro [Cadastro], tem-se uma seta apontando para um retângulo na direita, escrito [Emitir folha], sendo que deste retângulo, tem-se uma seta apontando para um paralelogramo escrito [Folha de pagamento]. Além disso, no cilindro [Cadastro], há uma seta apontando para baixo, para um retângulo escrito [Extrair relação proj./emp.], sendo que este aponta para um paralelogramo escrito [Relatório]. Além dessa seta que sai do cilindro, há uma outra, sendo que esta aponta para um retângulo escrito [Emitir horas extras], sendo que deste retângulo tem-se uma seta apontando para outro paralelogramo também escrito [Relatório].
+
+3ª Geração (próximo do que é usado nos dias de hoje)
+
+Processamento da informação.
+
+Começou-se a mapear conceitos intrínsecos aos bancos de dados.
+
+Observe que a partir deste momento se começa a modelar algumas coisas, exemplo: Qual é o dado identificador no cadastro de pessoas? Qual é o dado que é o identificador do cadastro de clientes? Logo, alguns dados que são guardados de determinado cliente serão os dados identificadores de tal cliente, é por isso que se afirma que se começa a mapear conceitos para parte interna do banco de dados.
+
+4ª Geração
+
+Na quarta e última geração os SGBD evoluíram significativamente, porque o Hardware permitiu essa evolução, como ocorreu com a computação em geral, é o chamado geração do processamento ampliado, que começou a ter a ampliação das aplicações de sistemas de banco de dados, esses SGBD tiveram um aprimoramento significativo, e passou-se a ter ferramentas e funcionalidades vistas até o momento, o que é muito perceptível, pois é a geração que se trabalha nos dias de hoje. Portanto, há um processamento ampliado, uma ampliação das aplicações de sistemas de banco de dados.
+
+----------------------------------------------------------------------------------------------
+Referências:
+
+DATE, C. J. Introdução aos sistemas de Banco de Dados. 8. Ed. Rio de Janeiro: Campus, 2004.
+
+ELMASRI, R. e NAVATHE, S. Sistemas de Banco de Dados. São Paulo: Pearson/Addison Wesley, 2011.
+
+SILBERSCHATZ, Abraham; KORTH, Henry F.; SUDARSHAN, S. Sistema de banco de dados. São Paulo: Elsevier, 2012.
